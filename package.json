@@ -1,0 +1,22 @@
+{
+  "name": "simon-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LewisCM14/simon-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LewisCM14/simon-game/issues"
+  },
+  "homepage": "https://github.com/LewisCM14/simon-game#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}
