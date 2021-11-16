@@ -1,3 +1,7 @@
+/*jshint esversion: 6*/
+
+// The Game object
+
 let game = {
     score: 0,
     currentGame: [],
@@ -6,6 +10,9 @@ let game = {
 }
 
 function newGame() {
+    
+    // Resets the values of the Game Object. 
+    
     game.score = 0;
     game.playerMoves = [];
     game.currentGame = [];
@@ -13,6 +20,9 @@ function newGame() {
 }
 
 function showScore() {
+    
+    // Updates the score HTML as required.
+
     document.getElementById('score').innerText = game.score;
 }
 
