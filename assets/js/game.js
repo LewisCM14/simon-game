@@ -17,6 +17,7 @@ function newGame() {
     game.playerMoves = [];
     game.currentGame = [];
     showScore();
+    addTurn();
 }
 
 function showScore() {
@@ -26,4 +27,16 @@ function showScore() {
     document.getElementById('score').innerText = game.score;
 }
 
-module.exports = { game, newGame, showScore };
+function addTurn() {
+    
+    /**
+     * Empties the playerMoves array.
+     * Returns a random choice. 
+     */
+
+    game.playerMoves = [];
+    game.currentGame.push(game.choices[(Math.floor(Math.random() * 4))]);
+    // showTurns();
+}
+
+module.exports = { game, newGame, showScore, addTurn };
