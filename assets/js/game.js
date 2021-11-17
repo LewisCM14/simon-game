@@ -11,12 +11,26 @@ let game = {
 }
 
 function newGame() {
-    
-    // Resets the values of the Game Object. 
+
+    /**
+     * Resets the values of the Game Object.
+     * Adds click event listener to the circles in game sequence.
+     */
     
     game.score = 0;
     game.playerMoves = [];
     game.currentGame = [];
+    for (let circle of document.getElementsByClassName('circle')) {
+        if (circle.getAttribute( 'data-listener') !== 'true') {
+            circle.addEventListener('click', (e) => {
+                let move = e.target.getAttribute('id');
+                lightsOn(move);
+                game.playerMoves.push(move);
+                playerTurn();
+            });
+            circle.setAttribute('data-listener', 'true');
+        }
+    }
     showScore();
     addTurn();
 }
