@@ -14,7 +14,7 @@ function newGame() {
 
     /**
      * Resets the values of the Game Object.
-     * Adds click event listener to the circles in game sequence.
+     * Adds click event listener to the circle class in game sequence.
      */
     
     game.score = 0;
@@ -68,6 +68,9 @@ function lightsOn(circ) {
 }
 
 function showTurns() {
+
+    // Runs through the game sequence.
+
     game.turnNumber = 0;
     let turns = setInterval(() => {
         lightsOn(game.currentGame[game.turnNumber]);
@@ -78,4 +81,21 @@ function showTurns() {
     }, 800);
 }
 
-module.exports = { game, newGame, showScore, addTurn, lightsOn, showTurns };
+function playerTurn() {
+
+    /**
+     * Compares the players turn to the game sequence.
+     * Updates score as required.
+     */
+
+    let i = game.playerMoves.length - 1;
+    if (game.currentGame[i] === game.playerMoves[i]) {
+        if (game.currentGame.length == game.playerMoves.length) {
+            game.score++;
+            showScore();
+            addTurn();
+        }
+    }
+}
+
+module.exports = { game, newGame, showScore, addTurn, lightsOn, showTurns, playerTurn };
