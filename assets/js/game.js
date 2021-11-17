@@ -20,13 +20,6 @@ function newGame() {
     addTurn();
 }
 
-function showScore() {
-    
-    // Updates the score HTML as required.
-
-    document.getElementById('score').innerText = game.score;
-}
-
 function addTurn() {
     
     /**
@@ -39,4 +32,24 @@ function addTurn() {
     // showTurns();
 }
 
-module.exports = { game, newGame, showScore, addTurn };
+function showScore() {
+    
+    // Updates the score HTML as required.
+
+    document.getElementById('score').innerText = game.score;
+}
+
+function lightsOn(circ) {
+
+     /**
+     * Adds the light class to the returned choice.
+     * Removes after set time.
+     */
+
+    document.getElementById(circ).classList.add('light');
+    setTimeout(() => {
+        document.getElementById(circ).classList.remove('light');
+    }, 400);
+}
+
+module.exports = { game, newGame, showScore, addTurn, lightsOn };
