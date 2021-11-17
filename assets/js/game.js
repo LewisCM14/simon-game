@@ -14,7 +14,7 @@ function newGame() {
 
     /**
      * Resets the values of the Game Object.
-     * Adds click event listener to the circle class in game sequence.
+     * Adds click event listener to the circle class.
      */
     
     game.score = 0;
@@ -86,6 +86,7 @@ function playerTurn() {
     /**
      * Compares the players turn to the game sequence.
      * Updates score as required.
+     * If wrong move, alerts and starts new game.
      */
 
     let i = game.playerMoves.length - 1;
@@ -95,6 +96,9 @@ function playerTurn() {
             showScore();
             addTurn();
         }
+    } else {
+        alert('Wrong move!');
+        newGame();
     }
 }
 
