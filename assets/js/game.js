@@ -15,6 +15,8 @@ function newGame() {
     /**
      * Resets the values of the Game Object.
      * Adds click event listener to the circle class.
+     * Prevents click on game board prior to start.
+     * Disables clicks during computer sequence.
      */
     
     game.score = 0;
@@ -23,10 +25,13 @@ function newGame() {
     for (let circle of document.getElementsByClassName('circle')) {
         if (circle.getAttribute( 'data-listener') !== 'true') {
             circle.addEventListener('click', (e) => {
-                let move = e.target.getAttribute('id');
-                lightsOn(move);
-                game.playerMoves.push(move);
-                playerTurn();
+                if (game.currentGame.length > 0 && !game.turnInProgress){
+                    let move = e.target.getAttribute('id');
+                    game.lastButton = move;
+                    lightsOn(move);
+                    game.playerMoves.push(move);
+                    playerTurn();
+                }
             });
             circle.setAttribute('data-listener', 'true');
         }
@@ -68,15 +73,20 @@ function lightsOn(circ) {
 }
 
 function showTurns() {
-
-    // Runs through the game sequence.
-
+    
+    /**
+     * Runs through the game sequence.
+     * Uses turnInProgress to prevent click during game play.
+     */
+    
+    game.turnInProgress = true;
     game.turnNumber = 0;
     let turns = setInterval(() => {
         lightsOn(game.currentGame[game.turnNumber]);
         game.turnNumber++;
         if (game.turnNumber >= game.currentGame.length) {
             clearInterval(turns);
+            game.turnInProgress = false;
         }
     }, 800);
 }
